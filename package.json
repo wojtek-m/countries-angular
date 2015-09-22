@@ -1,0 +1,12 @@
+{
+  "name": "Countries",
+  "version": "0.0.0",
+  "description": "A simple Angular.js app allowing search information about world countries",
+  "main": "server.js",
+  "repository": "",
+  "author": "Wojtek Murawski",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4"
+  }
+}
