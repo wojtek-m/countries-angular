@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" ng-app="countriesApp">
+  <head>
+    <title>Countries</title>
+    <script src="/js/angular.min.js"></script>
+    <script src="controllers.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+  </head>
+  
+  <body ng-controller="countriesCtrl">
+    <div class="container">
+      <div class="row center">
+        <div class="col-xs-12">
+          <h1>{{country.name}} is a country with capital in 
+          {{country.capital}}</h1>
+          <p>Population: {{country.population}}</p>
+          <input type="text" name="" ng-model="dupa"/>
+          <h2>You have typed: {{dupa}}</h2>
+          <img src="img/gem-topaz-1.png"></img>
+          <h1>{{countries[0].name.common}}</h1>
+        </div>
+      </div>
+    </div>
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>
