@@ -1,0 +1,34 @@
+<section>
+    <div class="row center">
+        
+        <div>
+            <img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag"></img>
+        </div>
+        
+        <div class="col-xs-12">
+            <p>Common name: </p>
+            <h1>{{country.name.common}}</h1>
+            <p>Official name: </p>
+            <h3>{{country.name.official}}</h3>
+            <p>List of native names:</p>
+            <p ng-repeat="nativename in country.name.native">
+                <span>Common: <strong>{{nativename.common}}</strong></span><br>
+                <span>Official: <strong>{{nativename.official}}</strong></span><br>
+            </p>
+            
+        </div>
+        
+        <div>
+            <p>Capital: {{country.capital}}</p>
+            <p>Currencies: <span ng-repeat="currency in country.currency">{{currency}} </span></p>
+        </div>
+        
+        <div>
+            <ul>
+                <li>TLD: {{country.tld[0]}}</li>
+                <li>Calling codes: <span ng-repeat="code in country.callingCode">{{code}}</span></li>
+                <li>Languages: <span ng-repeat="language in country.languages">{{language}} </span></li>
+            </ul>
+        </div>
+    </div>
+</section>

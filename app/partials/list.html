@@ -1,0 +1,30 @@
+<section>
+    <div class="row center">
+        <div class="col-xs-12">
+            <h1>World Countries Directory</h1>
+            <label for="search">Country Search</label>
+            <input ng-model="query" name="search" placeholder="Search for a country" autofocus>
+            <label>
+                <select ng-model="countriesOrder">
+                    <option value="name.common">Name</option>
+                    <option value="capital">Capital</option>
+                    <option value="area">Area</option>
+                </select>
+            </label>
+            <label>
+                <input type="radio" ng-model="direction" name="direction" checked> ascending
+            </label>
+            <label>
+                <input type="radio" ng-model="direction" name="direction" value="reverse"> descending
+            </label>
+            <ul>
+                <li ng-repeat="country in countries | filter: query | orderBy: countriesOrder:direction">
+                    <a href="#/{{country.name.common}}">
+                    <h1>{{country.name.common}}</h1>
+                    <img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag"></img>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

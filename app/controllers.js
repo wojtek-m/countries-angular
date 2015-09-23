@@ -1,18 +1,20 @@
 /*global angular*/
 /*global $http*/
 
-var myApp = angular.module('countriesApp', []);
+var countriesControllers = angular.module('countriesControllers', []);
 
-myApp.controller('countriesCtrl', function ($scope, $http) {
-   $scope.country = {
-       'name' : 'Poland',
-       'capital' : 'Warsaw',
-       'population' : 37000000
-   }
-   
+countriesControllers.controller('ListCtrl', ['$scope', '$http', function ($scope, $http) {
    $http.get('countries.json').success(function(data) {
         $scope.countries = data;
+        $scope.countriesOrder = 'name.common';
    });
+}]);
 
-   
-});
+countriesControllers.controller('ProfileCtrl', ['$scope', '$http', '$filter', '$routeParams', function ($scope, $http, $filter, $routeParams) {
+   $http.get('countries.json').success(function(data) {
+      // find the country using filter and common name
+      $scope.country = $filter('filter')(data, function(item) {
+         return item.name.common === $routeParams.countryName;
+      })[0];
+   });
+}]);
