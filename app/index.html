@@ -7,19 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/css/app.css">
   </head>
   
   <body ng-controller="countriesCtrl">
     <div class="container">
       <div class="row center">
         <div class="col-xs-12">
-          <h1>{{country.name}} is a country with capital in 
-          {{country.capital}}</h1>
-          <p>Population: {{country.population}}</p>
-          <input type="text" name="" ng-model="dupa"/>
-          <h2>You have typed: {{dupa}}</h2>
-          <img src="img/gem-topaz-1.png"></img>
-          <h1>{{countries[0].name.common}}</h1>
+          
+          <h1>World Countries Directory</h1>
+          <label for="search">Country Search</label>
+          <input ng-model="query" name="search" placeholder="Search for a country" autofocus>
+          
+          <label>
+            <select ng-model="countriesOrder">
+              <option value="name.common">Name</option>
+              <option value="capital">Capital</option>
+              <option value="area">Area</option>
+            </select>
+          </label>
+          
+          <ul>
+            <li ng-repeat="country in countries | filter: query | orderBy: countriesOrder">
+              <h1>{{country.name.common}}</h1>
+              <img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag"></img>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
