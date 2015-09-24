@@ -1,0 +1,89 @@
+<div layout="column" layout-align="center center" [flex]>
+
+    {{db_population}}
+
+
+    <!-- Flag -->
+    <div [flex]>
+        <img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag"></img>
+    </div>
+
+    <div [flex]>
+        <!-- Names -->
+        <h3>Names: </h3>
+        <ul>
+            <li>Common name: <strong>{{country.name.common}}</strong></li>
+            <li>Official name: <strong>{{country.name.official}}</strong></li>
+        </ul>
+
+        <p>List of native names:</p>
+        <ul>
+            <li ng-repeat="nativename in country.name.native">
+                <span>Common: <strong>{{nativename.common}}</strong></span>
+                <br>
+                <span>Official: <strong>{{nativename.official}}</strong></span>
+                <br>
+            </li>
+        </ul>
+
+        <!-- Alternative Spellings -->
+        <p>List of alternative spellings:
+            <ul>
+                <li ng-repeat="spelling in country.altSpellings">
+                    <strong>{{spelling}}</strong>
+                </li>
+            </ul>
+        </p>
+
+    </div>
+
+    <div [flex]>
+        <!-- Basic Information -->
+        <h3>Basic Information: </h3>
+        <ul>
+            <li>Region: <strong>{{country.region}}</strong></li>
+            <li>Subregion: <strong>{{country.subregion}}</strong></li>
+            <li>Capital: <strong>{{country.capital}}</strong></li>
+            <li>Languages: <span ng-repeat="language in country.languages">{{language}} </span></li>
+            <li>Currencies: <span ng-repeat="currency in country.currency"><strong>{{currency}}</strong> </span></li>
+        </ul>
+    </div>
+
+    <div [flex]>
+        <!-- Technical details -->
+        <h3>Techinal Information: </h3>
+        <ul>
+
+            <li>TLD: {{country.tld[0]}}</li>
+            <li>Country code: {{country.cca3}}</li>
+            <li>Calling codes: <span ng-repeat="code in country.callingCode">{{code}}</span></li>
+
+        </ul>
+    </div>
+
+
+    <div [flex]>
+        <!-- Translations -->
+        <h3>International translations:</h3>
+        <ul>
+            <li ng-repeat="(key, lang) in country.translations">{{key}}: common: <strong>{{lang.common}}</strong>, official: {{lang.official}}</li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <md-grid-list md-cols="3" md-gutter="1em" md-row-height="4:3" [flex]>
+        <md-grid-tile ng-repeat="photo in flickr.photos.photo | limitTo: 20" class="md-">
+            <md-card>
+                <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_m.jpg" alt="{{photo.title}}" class="md-card-image" />
+                <md-footer>
+                    <p>{{photo.title}}</p>
+                </md-footer>
+            </md-card>
+        </md-grid-tile>
+    </md-grid-list>
+</div>
+
+
+
+

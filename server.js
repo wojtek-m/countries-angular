@@ -4,11 +4,24 @@ var path = require('path');
 var async = require('async');
 var express = require('express');
 
+var Flickr = require('flickrapi'),
+  flickrOptions = {
+    api_key: 'fb4aacb85679883135400f881e7540be',
+    secret: '34b5a4be88d13ddd'
+  }
+  
+Flickr.tokenOnly(flickrOptions, function(error, flickr) {
+});
+
 
 var router = express();
 var server = http.createServer(router);
 
-router.use(express.static(path.resolve(__dirname, 'app')));
+router.use(express.static(path.resolve(__dirname, 'public')));
+router.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
+
+
 
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
