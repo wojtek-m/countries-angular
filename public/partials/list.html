@@ -1,41 +1,40 @@
-<section>
+<div layout="columns" layout-align="center center">
     <div>
-        <div>
-            <h1>World Countries Directory</h1>
-            <form>
-                
-                <md-input-container>
-                    <input label="Country search:" aria-label="country search" placeholder="Type your search query here" ng-model="query">
-                </md-input-container>
-                <md-progress-circular ng-if="isSearching" md-theme="green" md-mode="indeterminate"></md-progress-circular>
+        <h1 class="md-display-3">World Countries Directory</h1>
+        <md-input-container>
+            <input label="Country search:" aria-label="country search" placeholder="Type your search query here" ng-model="query">
+        </md-input-container>
+        <md-progress-circular ng-if="isSearching" md-theme="green" md-mode="indeterminate"></md-progress-circular>
 
-            </form>
-            
-            <label>
-                <select ng-model="countriesOrder">
-                    <option value="name.common">Name</option>
-                    <option value="capital">Capital</option>
-                    <option value="area">Area</option>
-                </select>
-            </label>
-            
-            <label>
-                <input type="radio" ng-model="direction" name="direction" checked> ascending
-            </label>
-            
-            <label>
-                <input type="radio" ng-model="direction" name="direction" value="reverse"> descending
-            </label>
-            
-            <div ng-show="query">
-                <div ng-repeat="country in countries | filter: query | orderBy: countriesOrder:direction" [flex="33"]>
+      <!--  <label>
+            <select ng-model="countriesOrder">
+                <option value="name.common">Name</option>
+                <option value="capital">Capital</option>
+                <option value="area">Area</option>
+            </select>
+        </label> -->
+        
+        <md-select ng-model="countriesOrder" placeholder="Sort by: ">
+          <md-option value="name.common">Name</md-option>
+          <md-option value="capital">Capital</md-option>
+          <md-option value="area">Area</md-option>
+        </md-select>
+        
+        <md-radio-group ng-model="direction" class="md-primary">
+            <md-radio-button name="direction" checked>Ascending</md-radio-button>
+            <md-radio-button name="direction" value="reverse">Descending</md-radio-button>
+        </md-radio-group>
+        
+        <md-divider></md-divider>
 
-                    <a href="#/{{country.name.common}}">
+        <div ng-show="query">
+            <div ng-repeat="country in countries | filter: query | orderBy: countriesOrder:direction" [flex="33" ]>
+
+                <a href="#/{{country.name.common}}">
                     <h1>{{country.name.common}}</h1>
                     <img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag"></img>
-                    </a>
-                </div>
+                </a>
             </div>
         </div>
     </div>
-</section>
+</div>
