@@ -74,7 +74,7 @@
         </ul>
     </div>
     
-    <div [flex]>
+    <div [flex] class="margin-bottom-20">
         <ul>
             <h3>WHO Data: </h3>
             <li ng-repeat="(key, desc) in who_code_map">{{desc}}: <strong>{{who[key].value.numeric}}</strong></li>
@@ -135,7 +135,7 @@
     <md-grid-list md-cols="3" md-gutter="1em" md-row-height="4:3" [flex]>
         <md-grid-tile ng-repeat="photo in flickr.photos.photo | limitTo: 20" class="md-">
             <md-card>
-                <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_m.jpg" alt="{{photo.title}}" class="md-card-image" />
+                <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_c.jpg" alt="{{photo.title}}" class="md-card-image" />
                 <md-footer>
                     <p>{{photo.title}}</p>
                 </md-footer>

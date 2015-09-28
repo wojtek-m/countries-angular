@@ -39,6 +39,8 @@ countriesControllers.controller('ProfileCtrl', ['$scope', '$http', '$filter', '$
       params: {
          method: 'flickr.photos.search',
          api_key: 'fb4aacb85679883135400f881e7540be',
+         restrict: 'orientation',
+         orientation: 'landscape',
          text: $routeParams.countryName,
          tags: $routeParams.countryName,
          sort: 'interestingness-desc',

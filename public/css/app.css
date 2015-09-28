@@ -3,10 +3,20 @@
     max-width: 200px;
 }
 
+.flag-xs {
+    max-width: 75px;
+    padding: 3px;
+    margin-right: 10px;
+}
+
 .app-content {
     padding: 10px;
 }
 
 .long {
     width: 90%;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
 }

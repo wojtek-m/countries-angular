@@ -25,15 +25,12 @@
             <md-radio-button name="direction" value="reverse">Descending</md-radio-button>
         </md-radio-group>
         
-        <md-divider></md-divider>
+        <md-divider class="margin-bottom-20"></md-divider>
 
         <div ng-show="query">
-            <div ng-repeat="country in countries | filter: query | orderBy: countriesOrder:direction" [flex="33" ]>
-
-                <a href="#/{{country.name.common}}">
-                    <h1>{{country.name.common}}</h1>
-                    <img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag"></img>
-                </a>
+            <div ng-repeat="country in countries | filter: query | orderBy: countriesOrder:direction" layout="row">
+                <div><img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag-xs"></img></div>
+                <div><a href="#/{{country.name.common}}"><p class="md-headline"> {{country.name.common}}</p></a></div>
             </div>
         </div>
     </div>
