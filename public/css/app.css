@@ -14,8 +14,22 @@ li {
     margin-right: 10px;
 }
 
+.footer {
+    font-size: 0.75em;
+    color: #ECECEC;
+}
+
+.footer a  {
+    color: #BFBFBF;
+    text-decoration: none;
+}
+
 .app-content {
     padding: 10px;
+}
+
+.center {
+    text-align: center;
 }
 
 .long {
@@ -41,4 +55,10 @@ li {
 
 .top-data {
     margin-top: 25px;
+}
+
+.wrapper {
+	min-height: 87.5%;
+	height: auto !important;
+	height: 87.5%;
 }
