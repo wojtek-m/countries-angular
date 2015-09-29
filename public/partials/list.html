@@ -5,14 +5,6 @@
             <input label="Country search:" aria-label="country search" placeholder="Type your search query here" ng-model="query">
         </md-input-container>
         <md-progress-circular ng-if="isSearching" md-theme="green" md-mode="indeterminate"></md-progress-circular>
-
-      <!--  <label>
-            <select ng-model="countriesOrder">
-                <option value="name.common">Name</option>
-                <option value="capital">Capital</option>
-                <option value="area">Area</option>
-            </select>
-        </label> -->
         
         <md-select ng-model="countriesOrder" placeholder="Sort by: ">
           <md-option value="name.common">Name</md-option>

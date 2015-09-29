@@ -14,15 +14,11 @@ var Flickr = require('flickrapi'),
 Flickr.tokenOnly(flickrOptions, function(error, flickr) {
 });
 
-
 var router = express();
 var server = http.createServer(router);
 
-router.use(cors());
-router.use(express.static(path.resolve(__dirname, 'public')));
+router.use('/', express.static(path.resolve(__dirname, 'public')));
 router.use('/bower_components',  express.static(__dirname + '/bower_components'));
-
-
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
   var addr = server.address();

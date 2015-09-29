@@ -19,18 +19,7 @@ countriesControllers.controller('ProfileCtrl', ['$scope', '$http', '$filter', '$
          return item.name.common === $routeParams.countryName;
    })[0];
    
-   /*
-   
-   $http.get($routeParams.countryName + '.jsod').success(function(data) {
-      // get dbPedia data (not working on c9.io due to https)
-      $scope.db = data.d.results[0];
-      $scope.db_population = data.d.results[0]['http://dbpedia.org/ontology/populationTotal'];
-   }).error(function(err, data) {
-     console.log(err);
-   })
-   
-   */
-   
+
    // get Flickr images
    $http({
       method: 'GET',
@@ -144,21 +133,12 @@ countriesControllers.controller('ProfileCtrl', ['$scope', '$http', '$filter', '$
    var who_query = who_q_general + who_q_economy + who_q_diet + who_q_habits + who_q_life_ex + who_q_disease + who_q_medical + who_q_mortality;
    var who_codes = ['WHS9_93','WHS9_86','WHS9_97','WHS9_85','WHS9_96','WHOSIS_000001','WHOSIS_000003','WHOSIS_000006','WHOSIS_000011','SA_0000001472','SA_0000001473','SA_0000001471','WHOSIS_000012','WHOSIS_000008','MDG_0000000028','WHOSIS_000009','WHOSIS_000010','WHS2_160','WHS2_161','WHS2_162','WHS2_163','WHS6_102', 'WHS6_125', 'WHS6_144', 'WHS3_40', 'WHS3_47', 'WHS3_48', 'WHS2_138', 'WHS2_152'];
    
+
    // get WHO data
-   $http({
-      method: 'GET',
-      cache: true,
-      url: 'http://apps.who.int/gho/athena/api/GHO/' + who_query + '?filter=COUNTRY:' + $scope.country.cca3 + '&format=json',
-      headers : {
-          "Origin" : "angular-countries.heroku.com",
-          "Access-Control-Expose-Headers": "X-Requested-With",
-          "Access-Control-Request-Method" : "GET",
-          "Access-Control-Request-Headers" : "Origin, X-Requested-With, Content-Type, Accept" 
-      }
-   }).success(function(data) {
+   var url = 'http://apps.who.int/gho/athena/api/GHO/' + who_query + '?filter=COUNTRY:' + $scope.country.cca3 + '&format=json&callback=JSON_CALLBACK';
+   $http.jsonp(url).success(function(data) {
       var whodata = data.fact;
       $scope.who = {};
-      
       
       // THIS IS VERY SLOW!!!!
       // iterate over codes queried, stored in an array
