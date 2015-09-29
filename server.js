@@ -3,6 +3,7 @@ var http = require('http');
 var path = require('path');
 var async = require('async');
 var express = require('express');
+var cors = require('cors');
 
 var Flickr = require('flickrapi'),
   flickrOptions = {
@@ -17,10 +18,9 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
 var router = express();
 var server = http.createServer(router);
 
+router.use(cors());
 router.use(express.static(path.resolve(__dirname, 'public')));
 router.use('/bower_components',  express.static(__dirname + '/bower_components'));
-
-
 
 
 

@@ -7,6 +7,7 @@
   "author": "Wojtek Murawski",
   "dependencies": {
     "async": "~0.2.8",
+    "cors": "^2.7.1",
     "express": "~3.2.4",
     "flickrapi": "^0.3.36"
   }

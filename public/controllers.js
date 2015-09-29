@@ -148,7 +148,13 @@ countriesControllers.controller('ProfileCtrl', ['$scope', '$http', '$filter', '$
    $http({
       method: 'GET',
       cache: true,
-      url: 'http://apps.who.int/gho/athena/api/GHO/' + who_query + '?filter=COUNTRY:' + $scope.country.cca3 + '&format=json'
+      url: 'http://apps.who.int/gho/athena/api/GHO/' + who_query + '?filter=COUNTRY:' + $scope.country.cca3 + '&format=json',
+      headers : {
+          "Origin" : "angular-countries.heroku.com",
+          "Access-Control-Expose-Headers": "X-Requested-With",
+          "Access-Control-Request-Method" : "GET",
+          "Access-Control-Request-Headers" : "Origin, X-Requested-With, Content-Type, Accept" 
+      }
    }).success(function(data) {
       var whodata = data.fact;
       $scope.who = {};
