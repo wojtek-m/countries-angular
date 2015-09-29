@@ -1,3 +1,9 @@
+body {
+    background-image: url('../img/hummingbird-736890_1920.jpg');
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
 
 li {
     list-style: none;
