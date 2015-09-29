@@ -1,91 +1,101 @@
-<div layout="column" layout-align="center center" [flex]>
-
-    {{db_population}}
-    
-    {{who.fact[0].dim.GHO}}: {{who.fact[0].Value}}
-    <p>Dupa biskupa: {{WHS9_86}}</p>
-    
-
-
-    <!-- Flag -->
-    <div [flex]>
-        <img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag"></img>
+<!-- SECTION 1 -->
+<section>
+    <div layout-sm="column" layout-md="column" layout="row" layout-align="left" [flex]>
+        <!-- Flag -->
+        <div class="long-data top-data">
+            <img ng-src="img/flags/{{country.cca3 | lowercase}}.svg" class="flag"></img>
+        </div>
+        
+        <!-- Large name -->
+        <div class="long-data top-data">
+            <span class="md-display-4">{{country.name.common}}</span><br>
+            <span class="md-display-1">({{country.name.official}})</span>
+        </div>
     </div>
+</section>
 
-    <div [flex]>
-        <!-- Names -->
-        <h3>Names: </h3>
-        <ul>
-            <li>Common name: <strong>{{country.name.common}}</strong></li>
-            <li>Official name: <strong>{{country.name.official}}</strong></li>
-        </ul>
-
-        <p>List of native names:</p>
-        <ul>
-            <li ng-repeat="nativename in country.name.native">
-                <span>Common: <strong>{{nativename.common}}</strong></span>
-                <br>
-                <span>Official: <strong>{{nativename.official}}</strong></span>
-                <br>
-            </li>
-        </ul>
-
-        <!-- Alternative Spellings -->
-        <p>List of alternative spellings:
-            <ul>
-                <li ng-repeat="spelling in country.altSpellings">
-                    <strong>{{spelling}}</strong>
-                </li>
-            </ul>
-        </p>
-
-    </div>
-
-    <div [flex]>
+<!-- SECTION 2 -->
+<section>
+    <div layout-sm="column" layout-md="column" layout="row" layout-align="left">
+        
         <!-- Basic Information -->
-        <h3>Basic Information: </h3>
-        <ul>
-            <li>Region: <strong>{{country.region}}</strong></li>
-            <li>Subregion: <strong>{{country.subregion}}</strong></li>
-            <li>Capital: <strong>{{country.capital}}</strong></li>
-            <li>Languages: <span ng-repeat="language in country.languages">{{language}} </span></li>
-            <li>Currencies: <span ng-repeat="currency in country.currency"><strong>{{currency}}</strong> </span></li>
-        </ul>
-    </div>
+        <div class="long-data md-subhead">
+            <h3 class="md-headline">Basic Information: </h3>
+            <md-list>
+                <li>Region: <strong>{{country.region}}</strong></li>
+                <li>Subregion: <strong>{{country.subregion}}</strong></li>
+                <li>Capital: <strong>{{country.capital}}</strong></li>
+                <li>Languages: <span ng-repeat="language in country.languages">{{language}} </span></li>
+                <li>Currencies: <span ng-repeat="currency in country.currency"><strong>{{currency}}</strong> </span></li>
+            </md-list>
+        </div>
+        
+        <!-- Names -->
+        <div class="long-data">
+            
+            <!-- Basic names -->
+            <h3 class="md-headline">Names: </h3>
+            <md-list>
+                <li>Common name: <strong>{{country.name.common}}</strong></li>
+                <li>Official name: <strong>{{country.name.official}}</strong></li>
+            </md-list>
+            
+            <!-- Native Names -->
+            <h3 class="md-headline">List of native names:</h3>
+            <md-list>
+                <li ng-repeat="nativename in country.name.native">
+                    <span>Common: <strong>{{nativename.common}}</strong></span>
+                    <br>
+                    <span>Official: <strong>{{nativename.official}}</strong></span>
+                    <br>
+                </li>
+            </md-list>
+        </div>
+        
+        <!-- Alternative Spellings -->
+        <div class="long-data md-subhead">
+            <h3 class="md-headline">List of alternative spellings:</h3>
+            <md-list>
+                <li ng-repeat="spelling in country.altSpellings">{{spelling}}</li>
+            </md-list>
+            </p>
+        </div>
+    </div>  
+</section>
 
-    <div [flex]>
+
+
+<!-- SECTION 3 -->
+<section>
+    <div layout-sm="column" layout-md="column" layout="row" layout-align="left">
         <!-- Technical details -->
-        <h3>Techinal Information: </h3>
-        <ul>
-
-            <li>TLD: {{country.tld[0]}}</li>
-            <li>Country code: {{country.cca3}}</li>
-            <li>Calling codes: <span ng-repeat="code in country.callingCode">{{code}}</span></li>
-
-        </ul>
-    </div>
-
-
-    <div [flex]>
-        <!-- Translations -->
-        <h3>International translations:</h3>
-        <ul>
-            <li ng-repeat="(key, lang) in country.translations">{{key}}: common: <strong>{{lang.common}}</strong>, official: {{lang.official}}</li>
-        </ul>
-    </div>
+        <div class="long-data">
+            <h3 class="md-headline">Techinal Information: </h3>
+            <md-list>
+                <li>TLD: {{country.tld[0]}}</li>
+                <li>Country code: {{country.cca3}}</li>
+                <li>Calling codes: <span ng-repeat="code in country.callingCode">{{code}}</span></li>
+            </md-list>
+        </div>
     
-    <div [flex] class="margin-bottom-20">
-        <ul>
-            <h3>WHO Data: </h3>
-            <li ng-repeat="(key, desc) in who_code_map">{{desc}}: <strong>{{who[key].value.numeric}}</strong></li>
-        </ul>
+    
+        <!-- WHO data -->
+        <div class="margin-bottom-20 long-data md-subhead">
+            <md-list>
+                <h3 class="md-headline">WHO Data: </h3>
+                <li ng-repeat="(key, desc) in who_code_map" class="md-subhead"><small>{{desc}}: <strong>{{who[key].value.numeric}}</strong></small></li>
+            </md-list>
+        </div>
+    
+        <!-- Translations -->
+        <div class="long-data md-subhead">
+            <h3 class="md-headline">International translations:</h3>
+            <md-list>
+                <li ng-repeat="(key, lang) in country.translations"><small><strong>{{key}}</strong>: common: <strong>{{lang.common}}</strong>, official: {{lang.official}}</small></li>
+            </md-list>
+        </div>
     </div>
-
-</div>
-
-
-
-
+</section>
 
 
 <!--
@@ -129,20 +139,34 @@
    -->
 
 
+<!-- SECTION 4 - Flickr Images -->
+<section>
+    <div>
+        <md-grid-list md-cols="3" md-gutter="1em" md-row-height="3:3" [flex]>
+            <md-grid-tile ng-repeat="photo in flickr.photos.photo | limitTo: 20" class="margin-bottom-20">
+                <md-card>
+                    <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_c.jpg" alt="{{photo.title}}" class="md-card-image" />
+                    <md-footer>
+                        <p class="md-subhead photo-footer">{{photo.title}}</p>
+                    </md-footer>
+                </md-card>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+</section>
 
 
-<div>
-    <md-grid-list md-cols="3" md-gutter="1em" md-row-height="4:3" [flex]>
-        <md-grid-tile ng-repeat="photo in flickr.photos.photo | limitTo: 20" class="md-">
-            <md-card>
-                <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_c.jpg" alt="{{photo.title}}" class="md-card-image" />
-                <md-footer>
-                    <p>{{photo.title}}</p>
-                </md-footer>
-            </md-card>
-        </md-grid-tile>
-    </md-grid-list>
-</div>
-
-
-
+<!-- Flickr images sizing guide: 
+    s	small square 75x75
+    q	large square 150x150
+    t	thumbnail, 100 on longest side
+    m	small, 240 on longest side
+    n	small, 320 on longest side
+    -	medium, 500 on longest side
+    z	medium 640, 640 on longest side
+    c	medium 800, 800 on longest side†
+    b	large, 1024 on longest side*
+    h	large 1600, 1600 on longest side†
+    k	large 2048, 2048 on longest side†
+    o	original image, either a jpg, gif or png, depending on source format
+-->
