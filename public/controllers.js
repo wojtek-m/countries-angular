@@ -144,6 +144,7 @@ countriesControllers.controller('ProfileCtrl', ['$scope', '$http', '$filter', '$
       // iterate over codes queried, stored in an array
       who_codes.forEach(function(code) {
          // iterate over returned data objects to find relevant ones
+         whodata_loop:
          for (var key in whodata) {
             // iterate over Dim array in each object, because the location of 
             // the GHO code seems random (WHO is a mess...)
@@ -152,6 +153,7 @@ countriesControllers.controller('ProfileCtrl', ['$scope', '$http', '$filter', '$
                // relevant code
                if (whodata[key].Dim[i].code === code) {
                   $scope.who[code] = whodata[key];
+                  break whodata_loop;
                }
             }
          }
