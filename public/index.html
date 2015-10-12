@@ -1,36 +1,40 @@
 <!doctype html>
-<html lang="en" ng-app="countriesApp">
+<html lang="en" data-ng-app="countriesApp">
 
 <head>
   <title>Countries</title>
+  <meta name="charset" content="utf-8">
+  <meta name="description" content="A simple Angular.js app allowing search through a database of world countries and display a profile of each country.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
   <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body>
-  <md-toolbar layout="row">
-    <div class="md-toolbar-tools">
-      <span class="md-flex"><a href="#/">Countries App</a></span>
-    </div>
-    <div class="md-toolbar-tools">
-      <span class="md-flex"><a href="#/">Search</a></span>
-    </div>
-  </md-toolbar>
-  
-  <div class="wrapper" ng-view>
-  </div>
+  <nav>
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <span class="md-flex"><h1><a href="#/">Countries App</a></h1></span>
+      </div>
+      <div class="md-toolbar-tools">
+        <span class="md-flex"><a href="#/">Search</a></span>
+      </div>
+    </md-toolbar>
+  </nav>
 
+  <main class="wrapper" data-ng-view>
+  </main>
 
-  <md-toolbar class="md-primary md-hue-1">
-      <p class="center footer"><small></small>Web Dev by <a href="http://wojtekmurawski.me">Wojtek Murawski</a> |  
-      Background by <a href="https://pixabay.com/en/hummingbird-bird-fly-wing-flutter-736890/">Schattenwolf</a> | Built using: <a href="https://github.com/mledoze/countries">Countries</a> | <a href="https://nodejs.org/en/">Node.js</a> | 
-      <a href="https://angularjs.org/">Angular.js</a> | <a href="https://material.angularjs.org/">Angular Material</a> | 
-      <a href="http://bower.io/">Bower</a> | 
-      <a href="https://c9.io/">C9.io</a> | 
-      <a href="https://heroku.com">Heroku</a></small></p>
-  </md-toolbar>
-
+  <footer>
+      <md-toolbar class="md-primary md-hue-1">
+        <p class="center footer">Web Dev by <a href="http://wojtekmurawski.me">Wojtek Murawski</a> |  
+        Background by <a href="https://pixabay.com/en/hummingbird-bird-fly-wing-flutter-736890/">Schattenwolf</a> | Built using: <a href="https://github.com/mledoze/countries">Countries</a> | <a href="https://nodejs.org/en/">Node.js</a> | 
+        <a href="https://angularjs.org/">Angular.js</a> | <a href="https://material.angularjs.org/">Angular Material</a> | 
+        <a href="http://bower.io/">Bower</a> | 
+        <a href="https://c9.io/">C9.io</a> | 
+        <a href="https://heroku.com">Heroku</a></p>
+      </md-toolbar>
+  </footer>
 
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
